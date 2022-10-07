@@ -3,11 +3,11 @@
 
 ## Распределение ролей в команде
 Согласно документации SCRUM, роли в команде были разделены между участниками следующим образом:
-* Уткин Герман (forodie) -- Product Owner;
-* Абдурахманов Данил (youngtr4der) -- Scrum master;
-* Николаев Михаил (MishailN1kolaev) -- Developer;
-* Дорофеев Данила (orekiqqe) -- Developer;
-* Пыжиков Евгений (EvgenPeo) -- Developer.
+* Уткин Герман (forodie) — Product Owner;
+* Абдурахманов Данил (youngtr4der) — Scrum master;
+* Николаев Михаил (MishailN1kolaev) — Developer;
+* Дорофеев Данила (orekiqqe) — Developer;
+* Пыжиков Евгений (EvgenPeo) — Developer.
 
 ## Хронология заданий
 1. Изучить предложенные источники по SCRUM и Agile, создать файл с основными определениями.
