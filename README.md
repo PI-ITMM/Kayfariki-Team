@@ -7,7 +7,8 @@
 * Абдурахманов Данил (youngtr4der) — Scrum master;
 * Николаев Михаил (MishailN1kolaev) — Developer;
 * Дорофеев Данила (orekiqqe) — Developer;
-* Пыжиков Евгений (EvgenPeo) — Developer.
+* Пыжиков Евгений (EvgenPeo) — Developer;
+* Чопсиев Рамазан (TheftMaster) — Developer.
 
 ## Хронология заданий
 1. Изучить предложенные источники по SCRUM и Agile, создать файл с основными определениями.
