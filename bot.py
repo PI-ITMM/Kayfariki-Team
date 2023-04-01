@@ -3,20 +3,21 @@ import time
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
+from bs4 import BeautifulSoup
 
-token = "INPUT_TOKEN_YOUR_BOT"
+token = "5685287693:AAGR5y8lytOjiF_2Cqrq72XjaNQ1l-mebWI"
 bot = telebot.TeleBot(token)
 
 driver = webdriver.Edge()
 driver.get("https://portal.unn.ru/ruz/main")
 elemLogin = driver.find_element(By.NAME, "USER_LOGIN")
-elemLogin.send_keys("INPUT_LOGIN_PORTAL")
+elemLogin.send_keys("INPUT_LOGIN")
 elemPassword = driver.find_element(By.NAME, "USER_PASSWORD")
-elemPassword.send_keys("INPUT_PASSWORD_PORTAL")
+elemPassword.send_keys("INPUT_PASSWORD")
 elemPassword.send_keys(Keys.ENTER)
+userGroup = {}
 
 assert "No results found." not in driver.page_source
-
 
 @bot.message_handler(content_types=['text'])
 def echo(message):
@@ -30,11 +31,17 @@ def echo(message):
         msg = bot.send_message(message.from_user.id, "Введите номер вашей группы: ")
         bot.register_next_step_handler(msg, group_step)
     elif message.text == "/rasp":
-        elemGroup = driver.find_element(By.ID, "autocomplete-group") 
-        elemGroup.send_keys("")
-        elemGroup.send_keys(userGroup)
-        elemGroup1 = driver.find_element(By.CSS_SELECTOR, "div.ng-star-inserted") 
-        elemGroup1.click()
+        if len(userGroup) == 0:
+            bot.send_message(message.from_user.id, "Пожалуйста, введите номер своей группы через /mygroup!")
+        else:
+            elemGroup = driver.find_element(By.ID, "autocomplete-group") 
+            elemGroup.send_keys("")
+            elemGroup.send_keys(userGroup) # Добавить sleep 1000
+            time.sleep(2)
+            elemGroup.send_keys(Keys.RETURN)
+            s = BeautifulSoup(driver.page_source, 'html.parser')
+            l = s.find_all_next("span", {'class:' 'bx-im-fullscreen-bg'})
+            bot.send_message(message.from_user.id, l.text)
     else:
         bot.send_message(message.from_user.id, "По всей видимости такой команды нет. Список команд: /help.\n\nВы написали: " + message.text)
 
